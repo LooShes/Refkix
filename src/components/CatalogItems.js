@@ -21,7 +21,9 @@ class CatalogItems extends Component {
                 <div style={{marginRight:"70px"}}>{this.props.movie.year}</div>
                 <img src={this.props.movie.img} alt="movie" style={{maxBlockSize: "300px"}}/>
                 <Popup trigger={<img src={rent} alt="rent-icon" style={{height:"100px"}} onClick={this.updateRent} />} modal>
-                    <div style={this.divStyle}> Modal content </div>
+                    <div style={this.divStyle}>{this.props.movie.title}
+                        <div style={{color:"red", display:"inline"}}>    unrent</div>
+                    </div>
                 </Popup>
             </div>
         );
