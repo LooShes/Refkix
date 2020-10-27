@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Movie from './Movie'
 import CatalogItems from './CatalogItems'
 
 class Catalog extends Component {
@@ -27,12 +26,20 @@ class Catalog extends Component {
         this.setState({ movies })
     }
 
+    handleKeyPress(target) {
+        if(target.charCode===13){
+          alert('Enter clicked!!!');    
+        } 
+      }
+
     render() {
         console.log(this.state.movies)
         return (
             <div>
+                <input type="text" placeholder="Search..." onKeyPress={this.handleKeyPress} />
+                <div id="budget">Budget: $10.00</div>
                 {this.state.movies.map(m => {
-                    return <CatalogItems movie={m} updateRent={this.updateRent} />
+                    return <div><CatalogItems movie={m} updateRent={this.updateRent} /><div id="pop"></div></div>
             })}
             </div>
         );

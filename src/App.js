@@ -15,6 +15,7 @@ function App() {
             <Link to="/catalog">Catalog</Link>
           </div>
           <div className='routes'>
+            <div>REFLIX</div>
             <Route path="/" exact component={Home}/>
             <Route path="/catalog" exact render={() => <Catalog />} />
             {/* <Route path="/directory/:fentities" exact render={({ match }) => <Fentities match={match} state={state} />}/>

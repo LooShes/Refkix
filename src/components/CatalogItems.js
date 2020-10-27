@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import rent from '../pics/rent.PNG'
-import Rented from './Rented';
-import Popup from "reactjs-popup";
+import Rented from './Rented'
+import ReactDOM from 'react-dom';
 
 class CatalogItems extends Component {
-    updateRent = () => {
-        this.props.updateRent(this.props.movie.title)
+    constructor(){
+        super()
+        this.test = this.updateRent.bind(this)
     }
 
-    divStyle = {
-        height: "500px",
-        width: "500px",
-        backgroundColor: "white"
+    updateRent = () => {
+        this.props.updateRent(this.props.movie.title)
+        ReactDOM.render(
+            <Rented  movies={this.props.movie} />,
+            document.getElementById('pop'))
     }
 
     render() {
@@ -20,11 +22,7 @@ class CatalogItems extends Component {
                 <div style={{marginRight:"70px"}}>{this.props.movie.title}</div>
                 <div style={{marginRight:"70px"}}>{this.props.movie.year}</div>
                 <img src={this.props.movie.img} alt="movie" style={{maxBlockSize: "300px"}}/>
-                <Popup trigger={<img src={rent} alt="rent-icon" style={{height:"100px"}} onClick={this.updateRent} />} modal>
-                    <div style={this.divStyle}>{this.props.movie.title}
-                        <div style={{color:"red", display:"inline"}}>    unrent</div>
-                    </div>
-                </Popup>
+                <img src={rent} alt="rent-icon" style={{height:"100px"}} onClick={this.updateRent} />
             </div>
         );
     }
